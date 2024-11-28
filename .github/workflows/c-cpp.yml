@@ -1,23 +1,13 @@
-name: C/C++ CI
-
-on:
-  push:
-    branches: [ $default-branch ]
-  pull_request:
-    branches: [ $default-branch ]
-
+name: Run Makefile
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: [push]
 jobs:
-  build:
-
+  Run-Makefile:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v4
-    # - name: configure
-    #   run: ./configure
-    - name: make
-      run: make
-    # - name: make check
-    #   run: make check
-    # - name: make distcheck
-    #   run: make distcheck
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - run: echo "Start running make."
+      - name: Run Makefile
+        run: make
+      - run: echo "Finished running make."
