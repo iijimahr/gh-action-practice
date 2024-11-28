@@ -8,5 +8,9 @@ all: $(TARGET)
 check: $(TARGET)
 	./test.out
 
+.PHONY: clean
+clean:
+	rm -f *.out *.o *~
+
 $(TARGET): $(SOURCES)
 	g++ -Wall -std=c++17 -o $@ $^
