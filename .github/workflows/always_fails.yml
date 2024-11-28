@@ -12,7 +12,5 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Annotate test errors
-        if: failure()
-        run: |
-          echo "::error::Tests failed. Check the logs for details."
+      - name: Failed
+        run: exit 1
