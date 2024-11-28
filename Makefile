@@ -1,8 +1,12 @@
+SOURCES := test.cpp
+TARGET := ./test.out
+
 .PHONY: all
-all:
-	@touch app.txt
+all: $(TARGET)
 
 .PHONY: check
-check:
-	@echo 1 > app.txt
+check: $(TARGET)
+	./test.out
 
+$(TARGET): $(SOURCES)
+	g++ -Wall -std=c++17 -o $@ $^
