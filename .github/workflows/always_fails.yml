@@ -1,0 +1,18 @@
+name: Always fails
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Annotate test errors
+        if: failure()
+        run: |
+          echo "::error::Tests failed. Check the logs for details."
